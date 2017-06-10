@@ -25,6 +25,20 @@ from os.path import dirname
 from flask_shuttle import __version__
 
 
+EXCLUDE_DIRS = [
+    '__pycache__',
+]
+
+
+EXCLUDE_FILES = [
+]
+
+
+EXCLUDE_EXTENSIONS = [
+    '.pyc',
+]
+
+
 logger = logging.getLogger(__name__)
 logger.setLevel(DEBUG)
 logger.addHandler(StreamHandler())
@@ -97,6 +111,10 @@ def _copy_dir(from_dir, to_dir, project_name):
         _mkdir_p(to_dir)
 
     for src_dir, sub_dirs, filenames in os.walk(from_dir):
+        # Skip directories from exclude list
+        if os.path.basename(src_dir) in EXCLUDE_LIST:
+            continue
+
         # Build and create destination directory path
         relative_path = src_dir.replace('{}/'.format(from_dir), '')
         dest_dir = os.path.join(to_dir, relative_path)
@@ -109,6 +127,15 @@ def _copy_dir(from_dir, to_dir, project_name):
         for filename in filenames:
             src_file = os.path.join(src_dir, filename)
             dst_file = os.path.join(dest_dir, filename)
+
+            # Skip files from exclude list
+            if os.path.basename(src_file) in EXCLUDE_FILES:
+                continue
+
+            # Skip extensions from exclude list
+            _, file_extension = os.path.splitext(src_file)
+            if file_extension in EXCLUDE_EXTENSIONS:
+                continue
 
             _copy_file(src_file, dst_file, project_parameters)
             logger.info("New: %s" % dst_file)
