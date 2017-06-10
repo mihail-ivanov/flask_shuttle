@@ -22,7 +22,7 @@ from logging import StreamHandler
 from os.path import abspath
 from os.path import dirname
 
-from flask_boost import __version__
+from flask_shuttle import __version__
 
 
 logger = logging.getLogger(__name__)
