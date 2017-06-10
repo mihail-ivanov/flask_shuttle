@@ -4,7 +4,7 @@ import flask_shuttle
 
 entry_points = {
     'console_scripts': [
-        "boost = flask_shuttle.cli:main",
+        "fshuttle = flask_shuttle.cli:main",
     ]
 }
 
@@ -15,11 +15,11 @@ with open('requirements.txt') as f:
 
 setup(
     name='Flask-Shuttle',
-    version=flask_boost.__version__,
+    version=flask_shuttle.__version__,
     packages=find_packages(),
     include_package_data=True,
     description='Flask application generator.',
-    url='https://bitbucket.org/muplex/flask_shuttle',
+    url='https://github.com/mihail-ivanov/flask_shuttle',
     author='Mihail Ivanov',
     author_email='mihail@muplextech.com',
     license='MIT',
