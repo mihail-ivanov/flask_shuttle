@@ -117,7 +117,7 @@ def _copy_dir(from_dir, to_dir, project_name):
 def _copy_file(src_file, dst_file, project_parameters):
     file_lines = []
 
-    with open(src_file, 'r', encoding='utf-8') as old_file:
+    with open(src_file, 'r') as old_file:
         for line in old_file:
             new_line = line
 
@@ -126,7 +126,7 @@ def _copy_file(src_file, dst_file, project_parameters):
 
             file_lines.append(new_line)
 
-    with open(dst_file, 'w', encoding='utf-8') as new_file:
+    with open(dst_file, 'w') as new_file:
         for line in file_lines:
             new_file.write(line)
 
