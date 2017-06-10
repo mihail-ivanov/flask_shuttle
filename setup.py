@@ -13,11 +13,23 @@ with open('requirements.txt') as f:
     requires = [l for l in f.read().splitlines() if l]
 
 
+def package_files(directory):
+    paths = []
+    for (path, directories, filenames) in os.walk(directory):
+        for filename in filenames:
+            paths.append(os.path.join('..', path, filename))
+    return paths
+
+
+extra_files = package_files('flask_shuttle/templates')
+
+
 setup(
     name='Flask-Shuttle',
     version=flask_shuttle.__version__,
-    packages=find_packages(include=['templates']),
+    packages=find_packages(),
     include_package_data=True,
+    package_data={'': extra_files},
     description='Flask application generator.',
     url='https://github.com/mihail-ivanov/flask_shuttle',
     author='Mihail Ivanov',
