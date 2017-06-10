@@ -112,7 +112,7 @@ def _copy_dir(from_dir, to_dir, project_name):
 
     for src_dir, sub_dirs, filenames in os.walk(from_dir):
         # Skip directories from exclude list
-        if os.path.basename(src_dir) in EXCLUDE_LIST:
+        if os.path.basename(src_dir) in EXCLUDE_DIRS:
             continue
 
         # Build and create destination directory path
