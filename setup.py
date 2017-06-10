@@ -16,7 +16,7 @@ with open('requirements.txt') as f:
 setup(
     name='Flask-Shuttle',
     version=flask_shuttle.__version__,
-    packages=find_packages(),
+    packages=['flask_shuttle'],
     include_package_data=True,
     description='Flask application generator.',
     url='https://github.com/mihail-ivanov/flask_shuttle',
