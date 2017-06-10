@@ -1,2 +1,3 @@
-# flask_shuttle
+# Flask shuttle
+
 Flask application generators
