@@ -3,13 +3,13 @@ import flask_shuttle
 
 
 entry_points = {
-    "console_scripts": [
+    'console_scripts': [
         "boost = flask_shuttle.cli:main",
     ]
 }
 
 
-with open("requirements.txt") as f:
+with open('requirements.txt') as f:
     requires = [l for l in f.read().splitlines() if l]
 
 
